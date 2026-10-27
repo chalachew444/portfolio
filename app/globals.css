@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --background: 250 250 249;
+  --surface: 255 255 255;
+  --foreground: 28 35 33;
+  --muted: 105 115 111;
+  --border: 226 231 228;
+  --accent: 18 123 99;
+  --accent-foreground: 255 255 255;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: 15 21 19;
+  --surface: 23 31 28;
+  --foreground: 235 241 237;
+  --muted: 156 169 162;
+  --border: 43 55 49;
+  --accent: 66 190 151;
+  --accent-foreground: 12 27 21;
+}
+
+* {
+  border-color: rgb(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+}
+
+::selection {
+  background: rgb(var(--accent) / 0.2);
+}
+
+.section-wrap {
+  width: min(100% - 3rem, 72rem);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  color: rgb(var(--accent));
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  line-height: 1.08;
+}
+
+.focus-ring {
+  outline: none;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .section-wrap {
+    width: min(100% - 2rem, 72rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

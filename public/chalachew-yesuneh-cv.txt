@@ -1,0 +1,29 @@
+CHALACHEW YESUNEH
+Full-Stack Software Engineer & Founder of Hulegeb Gebeya
+Injibara, Ethiopia
+
+PROFILE
+Fourth-year Software Engineering student at Injibara University and full-stack developer interested in building practical digital products for local communities and businesses. Founder of Hulegeb Gebeya, a local digital marketplace and service brokerage initiative.
+
+EDUCATION
+Software Engineering — Injibara University
+Fourth-year student
+
+SELECTED PROJECTS
+Hulegeb Gebeya — Local digital marketplace and service brokerage platform.
+Technologies: Next.js, NestJS, PostgreSQL, Prisma ORM, Docker, Telegram API.
+
+Hotel Reservation Platform — MERN-stack automated reservation-system prototype for a local hospitality business.
+Technologies: MongoDB, Express.js, React, Node.js.
+
+Employee Management System — Enterprise software requirements and architecture project.
+
+Digital B2B Airtime Distribution System — Microservice and architecture research for telecom wholesalers.
+
+TECHNICAL SKILLS
+Frontend: Next.js, React, TypeScript, Tailwind CSS, HTML, CSS.
+Backend and data: NestJS, Express.js, Node.js, PostgreSQL, Prisma ORM.
+Languages and tools: Java, C++, Python, Docker, Git, GitHub Desktop, PowerShell.
+
+CONTACT
+Add your email address and profile URLs to data/portfolio.ts before publishing.
