@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, GraduationCap, Lightbulb, MapPin } from "lucide-react";
 import { profile } from "@/data/portfolio";
 
@@ -8,6 +12,8 @@ const values = [
 ];
 
 export function About() {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <section id="about" className="border-y border-border/70 bg-surface/50 py-24 sm:py-28">
       <div className="section-wrap grid gap-12 md:grid-cols-[0.72fr_1.28fr] md:gap-20">
@@ -17,11 +23,53 @@ export function About() {
         </div>
         <div>
           <p className="text-lg leading-8 text-muted">
-            I&apos;m Chalachew, a software engineering student and full-stack developer who enjoys taking an idea from a rough sketch to a working product. My studies at {profile.university} give me a strong foundation; building for real users teaches me what matters most.
+            I&apos;m Chalachew, a fourth-year Software Engineering student at{" "}
+            {profile.university} in Injibara, Ethiopia. I enjoy turning early
+            ideas into reliable software, with an emphasis on clean code,
+            maintainable systems, and scalable architecture.
           </p>
           <p className="mt-5 text-base leading-7 text-muted">
-            As the founder of <span className="font-semibold text-foreground">ሁለገብ ገበያ (Hulegeb Gebeya)</span>, I&apos;m exploring how digital marketplaces and service brokerage can make everyday opportunities easier to find in Injibara. I&apos;m motivated by useful software, thoughtful engineering, and the people on the other side of the screen.
+            I build full-stack projects to strengthen my engineering skills and
+            explore how thoughtful digital products can make everyday services
+            more accessible in my community.
           </p>
+          <AnimatePresence initial={false}>
+            {expanded && (
+              <motion.div
+                id="about-details"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.28 }}
+                className="overflow-hidden"
+              >
+                <p className="pt-5 text-base leading-7 text-muted">
+                  I&apos;m currently developing{" "}
+                  <span className="font-semibold text-foreground">
+                    ሁለገብ ገበያ (Hulegeb Market)
+                  </span>
+                  , a local marketplace and service-brokerage platform for
+                  Injibara. I value clear communication, continuous learning,
+                  and building software that is understandable today and ready
+                  to grow tomorrow.
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <button
+            type="button"
+            aria-expanded={expanded}
+            aria-controls={expanded ? "about-details" : undefined}
+            onClick={() => setExpanded((value) => !value)}
+            className="focus-ring mt-6 inline-flex min-h-11 items-center gap-2 rounded-sm text-sm font-semibold text-accent transition hover:gap-3"
+          >
+            {expanded ? "Back / Show Less" : "See More"}
+            <ArrowUpRight
+              size={16}
+              className={expanded ? "rotate-180" : ""}
+              aria-hidden="true"
+            />
+          </button>
           <a href="#projects" className="focus-ring mt-7 inline-flex items-center gap-2 rounded-sm text-sm font-semibold text-accent hover:gap-3">
             Explore what I&apos;m building <ArrowUpRight size={16} />
           </a>

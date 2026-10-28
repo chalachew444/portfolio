@@ -1,66 +1,61 @@
 export const profile = {
   name: "Chalachew Yesuneh",
-  role: "Full-Stack Software Engineer & Founder",
+  role: "Full-Stack Software Engineer & 4th-Year Student",
   university: "Injibara University",
   location: "Injibara, Ethiopia",
-  email: "",
-  photo: "/images/profile.jpg",
-  cv: "/chalachew-yesuneh-cv.txt",
+  email: "chalachewyesuneh4@gmail.com",
+  phone: "+251930417823",
+  photo: "/profile.png",
+  cv: "/resume.pdf",
   links: {
-    github: "",
-    linkedin: "",
-    telegram: "",
+    github: "https://github.com/chalachew444",
+    linkedin: "https://www.linkedin.com/in/chalachew-yesuneh",
+    telegram: "https://t.me/Hulegeb4maret",
   },
 };
 
 export const projects = [
   {
-    name: "ሁለገብ ገበያ",
-    englishName: "Hulegeb Gebeya",
+    name: "ሁለገብ ገበያ (Hulegeb Market)",
+    englishName: "",
     category: "Startup · Marketplace",
     featured: true,
     description:
-      "A local digital marketplace and service-brokerage platform connecting Injibara communities with the products and services they need.",
-    technologies: ["Next.js", "NestJS", "PostgreSQL", "Prisma", "Docker", "Telegram API"],
-    github: "https://github.com/search?q=Hulegeb+Gebeya&type=repositories",
+      "A local multi-service brokerage and digital marketplace connecting the Injibara community with nearby products and services.",
+    details:
+      "Designed to help local customers discover useful services and products in one place, while giving service providers and local businesses a clearer way to reach the Injibara community.",
+    technologies: ["Next.js", "NestJS", "PostgreSQL", "Prisma ORM", "Docker"],
+    github: "https://github.com/chalachew444",
     demo: "",
     number: "01",
   },
   {
-    name: "Hotel Reservation Platform",
+    name: "Employee Management System",
     englishName: "",
-    category: "Web application · Prototype",
+    category: "Full-stack application · Employee tracking",
     featured: false,
     description:
-      "A MERN-stack reservation-system prototype designed to make it easier for a local hospitality business to manage online bookings.",
-    technologies: ["MongoDB", "Express.js", "React", "Node.js"],
-    github: "https://github.com/search?q=hotel+reservation+MERN&type=repositories",
+      "A robust employee tracking dashboard concept for managing staff records and supporting everyday workforce management.",
+    details:
+      "The system focuses on practical employee-management workflows: a clear dashboard, organized employee information, and a dependable foundation for workforce records as an organization grows.",
+    technologies: ["React", "TypeScript", "Node.js", "PostgreSQL"],
+    github: "https://github.com/chalachew444",
     demo: "",
     number: "02",
   },
   {
-    name: "Employee Management System",
+    name: "ጉሻ ጉም ሆቴል (Gusha Gum Hotel)",
     englishName: "",
-    category: "Enterprise · Software architecture",
+    category: "Hospitality · Booking management",
     featured: false,
     description:
-      "An enterprise software requirements and architecture project exploring the design of a structured employee-management solution.",
-    technologies: ["Requirements engineering", "System design", "UML"],
-    github: "https://github.com/search?q=employee+management+system&type=repositories",
+      "A hotel reservation and booking management system for improving the guest booking experience and organizing reservations.",
+    details:
+      "The system brings reservation details and booking management together, helping hotel staff keep track of guest bookings and giving visitors a clearer path to request a stay.",
+    technologies: ["React", "Node.js", "Express.js", "MongoDB"],
+    github: "https://github.com/chalachew444",
     demo: "",
     number: "03",
-  },
-  {
-    name: "Digital B2B Airtime Distribution",
-    englishName: "",
-    category: "Telecom · Architecture research",
-    featured: false,
-    description:
-      "Microservice architecture research for streamlining digital airtime distribution between telecom wholesalers and business customers.",
-    technologies: ["Microservices", "System architecture", "Telecom"],
-    github: "https://github.com/search?q=B2B+airtime+distribution&type=repositories",
-    demo: "",
-    number: "04",
   },
 ];
 
@@ -71,19 +66,13 @@ export const skills = [
     items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "HTML & CSS"],
   },
   {
-    title: "Backend & data",
+    title: "Backend & Database",
     description: "Reliable services and data foundations.",
-    items: ["NestJS", "Express.js", "Node.js", "PostgreSQL", "Prisma ORM"],
+    items: ["Node.js", "NestJS", "Express.js", "PostgreSQL", "Prisma ORM"],
   },
   {
-    title: "Languages & tools",
+    title: "Languages & Tools",
     description: "Practical tools for the whole build cycle.",
-    items: ["Java", "C++", "Python", "Docker", "Git", "GitHub Desktop", "PowerShell"],
+    items: ["Java", "C++", "Python", "Git", "Docker"],
   },
-];
-
-export const socialLinks = [
-  { label: "GitHub", href: profile.links.github },
-  { label: "LinkedIn", href: profile.links.linkedin },
-  { label: "Telegram", href: profile.links.telegram },
 ];

@@ -6,9 +6,9 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Chalachew Yesuneh — Full-Stack Developer",
+  title: "Chalachew Yesuneh — Full-Stack Software Engineer",
   description:
-    "Portfolio of Chalachew Yesuneh, a full-stack developer, software engineering student, and founder of Hulegeb Gebeya in Injibara, Ethiopia.",
+    "Portfolio of Chalachew Yesuneh, a full-stack software engineer and fourth-year Software Engineering student in Injibara, Ethiopia.",
 };
 
 const themeScript = `
