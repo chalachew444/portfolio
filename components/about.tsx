@@ -63,12 +63,24 @@ export function About() {
             onClick={() => setExpanded((value) => !value)}
             className="focus-ring mt-6 inline-flex min-h-11 items-center gap-2 rounded-sm text-sm font-semibold text-accent transition hover:gap-3"
           >
-            {expanded ? "Back / Show Less" : "See More"}
-            <ArrowUpRight
-              size={16}
-              className={expanded ? "rotate-180" : ""}
-              aria-hidden="true"
-            />
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={expanded ? "back" : "more"}
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -5 }}
+                transition={{ duration: 0.16 }}
+              >
+                {expanded ? "Back / Show Less" : "See More"}
+              </motion.span>
+            </AnimatePresence>
+            <motion.span
+              animate={{ rotate: expanded ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+              className="inline-flex"
+            >
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </motion.span>
           </button>
           <a href="#projects" className="focus-ring mt-7 inline-flex items-center gap-2 rounded-sm text-sm font-semibold text-accent hover:gap-3">
             Explore what I&apos;m building <ArrowUpRight size={16} />

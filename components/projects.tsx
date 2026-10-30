@@ -6,8 +6,16 @@ import Link from "next/link";
 import { ArrowUpRight, ExternalLink, Github, Star } from "lucide-react";
 import { projects } from "@/data/portfolio";
 
+const projectFilters = ["All", "Full-Stack", "Architecture"] as const;
+type ProjectFilter = (typeof projectFilters)[number];
+
 export function Projects() {
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
+  const [activeFilter, setActiveFilter] = useState<ProjectFilter>("All");
+  const visibleProjects = projects.filter(
+    (project) =>
+      activeFilter === "All" || project.filters.includes(activeFilter),
+  );
 
   return (
     <section id="projects" className="border-y border-border/70 bg-surface/50 py-24 sm:py-28">
@@ -19,9 +27,42 @@ export function Projects() {
           </div>
           <p className="max-w-sm text-sm leading-6 text-muted">A mix of products, prototypes, and architecture work shaped by real-world problems.</p>
         </div>
-        <div className="grid gap-5 md:grid-cols-2">
-          {projects.map((project) => (
-            <article key={project.number} className={`group relative flex min-h-[22rem] flex-col overflow-hidden rounded-2xl border bg-surface p-6 transition hover:-translate-y-1 sm:p-8 ${project.featured ? "border-accent/40 shadow-glow" : "border-border hover:border-accent/30"}`}>
+        <div
+          className="mb-8 flex flex-wrap gap-2"
+          role="group"
+          aria-label="Filter projects by category"
+        >
+          {projectFilters.map((filter) => (
+            <button
+              key={filter}
+              type="button"
+              aria-pressed={activeFilter === filter}
+              onClick={() => {
+                setActiveFilter(filter);
+                setExpandedProject(null);
+              }}
+              className={`focus-ring rounded-full border px-4 py-2 text-sm font-medium transition ${
+                activeFilter === filter
+                  ? "border-accent bg-accent text-accent-foreground"
+                  : "border-border bg-surface text-muted hover:border-accent/50 hover:text-accent"
+              }`}
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
+        <motion.div layout className="grid gap-5 md:grid-cols-2">
+          <AnimatePresence mode="popLayout">
+          {visibleProjects.map((project) => (
+            <motion.article
+              layout
+              key={project.number}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.22 }}
+              className={`group relative flex min-h-[22rem] flex-col overflow-hidden rounded-2xl border bg-surface p-6 transition hover:-translate-y-1 sm:p-8 ${project.featured ? "border-accent/40 shadow-glow" : "border-border hover:border-accent/30"}`}
+            >
               <div className="mb-8 flex items-center justify-between">
                 <span className="font-mono text-xs text-muted">PROJECT / {project.number}</span>
                 {project.featured && (
@@ -70,14 +111,26 @@ export function Projects() {
                 }
                 className="focus-ring mt-5 inline-flex min-h-11 w-fit items-center gap-2 rounded-sm text-sm font-semibold text-accent transition hover:gap-3"
               >
-                {expandedProject === project.number ? "Back" : "See More"}
-                <ArrowUpRight
-                  size={15}
-                  className={
-                    expandedProject === project.number ? "rotate-180" : ""
-                  }
-                  aria-hidden="true"
-                />
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={expandedProject === project.number ? "back" : "more"}
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -5 }}
+                    transition={{ duration: 0.16 }}
+                  >
+                    {expandedProject === project.number ? "Back" : "See More"}
+                  </motion.span>
+                </AnimatePresence>
+                <motion.span
+                  animate={{
+                    rotate: expandedProject === project.number ? 180 : 0,
+                  }}
+                  transition={{ duration: 0.2 }}
+                  className="inline-flex"
+                >
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </motion.span>
               </button>
               <div className="mt-auto flex items-center gap-5 pt-7">
                 {[
@@ -117,9 +170,10 @@ export function Projects() {
                   ),
                 )}
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+          </AnimatePresence>
+        </motion.div>
         <p className="mt-6 text-xs leading-5 text-muted">
           Demo and repository URLs can be added to{" "}
           <code>data/portfolio.ts</code> as they become publicly available.

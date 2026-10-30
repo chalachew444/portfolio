@@ -97,12 +97,24 @@ export function Skills() {
           onClick={() => setExpanded((value) => !value)}
           className="focus-ring inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-surface px-5 text-sm font-semibold transition hover:border-accent/50 hover:text-accent"
         >
-          {expanded ? "Back" : "See More / Details"}
-          <ArrowUpRight
-            size={15}
-            className={expanded ? "rotate-180" : ""}
-            aria-hidden="true"
-          />
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.span
+              key={expanded ? "back" : "more"}
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              transition={{ duration: 0.16 }}
+            >
+              {expanded ? "Back" : "See More / Details"}
+            </motion.span>
+          </AnimatePresence>
+          <motion.span
+            animate={{ rotate: expanded ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+            className="inline-flex"
+          >
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </motion.span>
         </button>
       </div>
     </section>

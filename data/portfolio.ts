@@ -19,6 +19,7 @@ export const projects = [
     name: "ሁለገብ ገበያ (Hulegeb Market)",
     englishName: "",
     category: "Startup · Marketplace",
+    filters: ["Full-Stack", "Architecture"],
     featured: true,
     description:
       "A local multi-service brokerage and digital marketplace connecting the Injibara community with nearby products and services.",
@@ -33,6 +34,7 @@ export const projects = [
     name: "Employee Management System",
     englishName: "",
     category: "Full-stack application · Employee tracking",
+    filters: ["Full-Stack"],
     featured: false,
     description:
       "A robust employee tracking dashboard concept for managing staff records and supporting everyday workforce management.",
@@ -47,6 +49,7 @@ export const projects = [
     name: "ጉሻ ጉም ሆቴል (Gusha Gum Hotel)",
     englishName: "",
     category: "Hospitality · Booking management",
+    filters: ["Full-Stack"],
     featured: false,
     description:
       "A hotel reservation and booking management system for improving the guest booking experience and organizing reservations.",

@@ -9,7 +9,7 @@ import {
   Send,
   Linkedin,
 } from "lucide-react";
-import { siGmail, siTelegram } from "simple-icons";
+import { siGithub, siGmail, siTelegram } from "simple-icons";
 import { profile } from "@/data/portfolio";
 
 type SubmissionState =
@@ -70,6 +70,7 @@ export function Contact() {
       label: "Email",
       detail: profile.email,
       href: `mailto:${profile.email}`,
+      brand: "gmail" as const,
     },
     {
       label: "Telegram",
@@ -77,7 +78,7 @@ export function Contact() {
         ? "Send me a message"
         : "Telegram profile coming soon",
       href: profile.links.telegram,
-      BrandIcon: true,
+      brand: "telegram" as const,
     },
     {
       label: "LinkedIn",
@@ -88,10 +89,16 @@ export function Contact() {
       Icon: Linkedin,
     },
     {
-      label: "Phone",
+      label: "Phone Number",
       detail: profile.phone,
       href: `tel:${profile.phone.replace(/[^\d+]/g, "")}`,
       Icon: Phone,
+    },
+    {
+      label: "GitHub",
+      detail: "Explore my projects",
+      href: profile.links.github,
+      brand: "github" as const,
     },
   ];
 
@@ -108,11 +115,11 @@ export function Contact() {
             <p className="text-sm font-semibold">Find me online</p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {contactMethods.map(
-                ({ label, detail, href, Icon, BrandIcon }) => {
+                ({ label, detail, href, Icon, brand }) => {
                   const contents = (
                     <>
                       <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent">
-                        {BrandIcon ? (
+                        {brand === "telegram" ? (
                           <svg
                             viewBox="0 0 24 24"
                             className="size-[18px] fill-current"
@@ -120,13 +127,21 @@ export function Contact() {
                           >
                             <path d={siTelegram.path} />
                           </svg>
-                        ) : label === "Email" ? (
+                        ) : brand === "gmail" ? (
                           <svg
                             viewBox="0 0 24 24"
                             className="size-[18px] fill-current"
                             aria-hidden="true"
                           >
                             <path d={siGmail.path} />
+                          </svg>
+                        ) : brand === "github" ? (
+                          <svg
+                            viewBox="0 0 24 24"
+                            className="size-[18px] fill-current"
+                            aria-hidden="true"
+                          >
+                            <path d={siGithub.path} />
                           </svg>
                         ) : (
                           Icon && <Icon size={18} aria-hidden="true" />
@@ -155,16 +170,20 @@ export function Contact() {
                       key={label}
                       href={href}
                       target={
-                        label === "Telegram" || label === "LinkedIn"
+                        label === "Telegram" ||
+                        label === "LinkedIn" ||
+                        label === "GitHub"
                           ? "_blank"
                           : undefined
                       }
                       rel={
-                        label === "Telegram" || label === "LinkedIn"
+                        label === "Telegram" ||
+                        label === "LinkedIn" ||
+                        label === "GitHub"
                           ? "noopener noreferrer"
                           : undefined
                       }
-                      className="focus-ring flex min-w-0 items-center gap-3 rounded-2xl border border-border bg-surface p-4 transition hover:border-accent/50"
+                      className="focus-ring group flex min-w-0 items-center gap-3 rounded-2xl border border-border bg-surface p-4 transition duration-200 hover:-translate-y-0.5 hover:border-accent/50 hover:shadow-glow"
                     >
                       {contents}
                     </a>
